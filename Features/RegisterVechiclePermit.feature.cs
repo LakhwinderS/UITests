@@ -131,6 +131,9 @@ this.ScenarioInitialize(scenarioInfo);
                         "t", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
+ testRunner.Then("Click on Calculate ,validate the amount \'$57.80\' and Click on Next", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 9
  testRunner.Then("Validate the Select permit type” is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

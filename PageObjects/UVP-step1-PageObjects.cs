@@ -26,7 +26,9 @@ namespace MsTestDemoProject.PageObjects
         public IWebElement permitDuration => _driver.FindElement(By.XPath("//label[contains(text(),'Permit Duration')]/following-sibling::span/span/select"));
         public IWebElement nextButton => _driver.FindElement(By.XPath("//input[@value=\"Next\"]"));
         public IWebElement selectPermitType => _driver.FindElement(By.XPath("//p[contains(text(),' Select permit type')]"));
-
+        public IWebElement calculateBtn => _driver.FindElement(By.XPath("//a[text()='Calculate']"));
+        public IWebElement permitCostLabel => _driver.FindElement(By.XPath("//span[contains(text(),'Your permit')]"));
+        public IWebElement permitCostAmount => _driver.FindElement(By.XPath("//span[contains(text(),'Your permit')]/following-sibling::span"));
 
         public void navigateToURL(string url)
         {
@@ -40,20 +42,30 @@ namespace MsTestDemoProject.PageObjects
             var selectVehicle = new SelectElement(vehicle);
             selectVehicle.SelectByValue(details);
 
-            
+            Thread.Sleep(2000);
             var selectVehicleType = new SelectElement(vehicleType);
             selectVehicleType.SelectByValue(vehicleTyp);
-            Address.SendKeys("10 Kent Road Lalor VIC 3075");
-         
+            Address.SendKeys("10 Kent Rd, LALOR VIC 3075");
+            Thread.Sleep(3000);
             var selectPermitDuration = new SelectElement(permitDuration);
             selectPermitDuration.SelectByValue(NumberOfDays);
+            
+
+
+
+
+
+        }
+        public void calculateAmount(string amount)
+        {
+            calculateBtn.Click();
             Thread.Sleep(5000);
+            var calculatedAmt = permitCostAmount.Text;
+            Console.WriteLine(calculatedAmt);
+
+            Assert.IsTrue(permitCostLabel.Displayed);
+            Assert.AreEqual(amount, calculatedAmt);
             nextButton.Click();
-
-
-
-
-
         }
         public void ValidatePermitTypeDisplayed()
 

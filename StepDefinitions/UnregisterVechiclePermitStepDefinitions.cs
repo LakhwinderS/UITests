@@ -31,6 +31,12 @@ namespace MsTestDemoProject.StepDefinitions
             uVP_Step1.enterDetails(vehicle,vehicleType,date, NumberOfDays);
         }
 
+        [Then(@"Click on Calculate ,validate the amount '([^']*)' and Click on Next")]
+        public void ThenClickOnCalculateValidateTheAmountAndClickOnNext(string amount)
+        {
+            uVP_Step1.calculateAmount(amount);
+        }
+
 
         [Then(@"Validate the Select permit type” is displayed")]
         public void ThenValidateTheSelectPermitTypeIsDisplayed()
